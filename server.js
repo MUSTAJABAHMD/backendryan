@@ -35,7 +35,7 @@ app.use(
       "http://localhost:5174",
       "https://americanpublishingsolutions.com",
       "https://ryanleehastings.com",
-      "dashboard.ryanleehastings.com"
+      "https://dashboard.ryanleehastings.com"
     ],
     credentials: true,
   })
