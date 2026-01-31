@@ -26,7 +26,7 @@ const sendOrderEmail = async ({ to, order, downloadTokens }) => {
 
         return `
         <li>
-          ${item.title} (${item.variantType}) - Qty: ${item.quantity} -  ${downloadLink ? `<a href="${downloadLink}">Download ${item.variantType}</a>` : ""}
+          ${item.variantType} - Qty: ${item.quantity} -  ${downloadLink ? `<a href="${downloadLink}">Download ${item.variantType}</a>` : ""}
         </li>
       `;
       })
