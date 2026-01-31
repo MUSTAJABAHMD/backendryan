@@ -51,10 +51,10 @@ app.use("/api/download", downloadRoutes);
 app.use("/images", express.static(path.join(path.resolve(), "public/images")));
 app.use("/audio", express.static(path.join(path.resolve(), "public/audio")));
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
+  res.send("backend is running ✅");
+});
 
- return res.send("backend is running on port 4000",User)
-})
 
 app.listen(port,()=>{
     console.log(`beckend is running ${port}`)
