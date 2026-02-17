@@ -41,7 +41,7 @@ const sendOrderEmail = async ({ to, order, downloadTokens }) => {
     `;
 
     const mailOptions = {
-      from: process.env.ADMIN_EMAIL || "yayitow547@juhxs.com",
+      from: process.env.EMAIL_USER,
       to,
       subject: `Your Order #${order._id} is confirmed`,
       html,
