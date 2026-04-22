@@ -4,7 +4,7 @@ import slugify from "slugify";
 // 🎧 Get all active audio products
 export const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find({ isActive: true });
+    const products = await Product.find({ isActive: true }).sort({ createdAt: 1 });;
 
     const audioProducts = [];
 
@@ -261,3 +261,52 @@ export const updateProduct = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+
+export const comment = async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  try {
+    const updated = await Product.findByIdAndUpdate(
+      id,
+      {
+        $push: { Reviews: data }
+      },
+      { new: true }
+    );
+
+    res.status(200).json({
+      message: "Review added",
+      product: updated
+    });
+
+  } catch (error) {
+    console.log("error", error);
+
+    res.status(500).json({
+      message: "Something went wrong"
+    });
+  }
+};
+
+export const getAllComment =  async ( req , res) => {
+
+  try {
+
+    const All = await Product.find({})
+    res.status(200).json({
+      message:"comment",
+      comment:All
+    })
+    
+  } catch (error) {
+    console.log("error", error);
+
+    res.status(500).json({
+      message: "Something went wrong"
+    });
+    
+  }
+}

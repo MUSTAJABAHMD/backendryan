@@ -40,6 +40,27 @@ const VariantSchema = new mongoose.Schema({
 
 }, { _id: false });
 
+
+const ReviewSchema = new mongoose.Schema({
+
+  type:{
+    type:String,
+    enum:["audio","ebook"],
+    required: true
+  },
+  name:{type:String, required:true},
+  comment:{type:String, required:true},
+
+  rating: {
+  type: Number,
+  default: 0,
+  min: 0,
+  max: 5
+}
+
+
+}, { _id: false })
+
 const ProductSchema = new mongoose.Schema({
   title: { type: String, required: true },
   slug: { type: String, unique: true, index: true },
@@ -70,6 +91,7 @@ const ProductSchema = new mongoose.Schema({
   },
 
   variants: [VariantSchema],
+  Reviews:[ReviewSchema],
 
   isOnSale: Boolean,
   isActive: { type: Boolean, default: true }
@@ -77,3 +99,4 @@ const ProductSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 export default mongoose.model("Product", ProductSchema);
+ 
